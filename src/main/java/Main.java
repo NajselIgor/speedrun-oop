@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String args[]) {
@@ -31,32 +28,34 @@ public class Main {
 //        }
         List<Zviera> zvery = new ArrayList<>(List.of(new Pes("bruno"), new Macka("pica")));
 
-        Map<String, String> hlavneMesta = new HashMap<>();
+        //prida do pola iba raz, ak uz prvok obsahuje ten co chceme pridat, tak ho uz neprida
+        Set<String> afta = new HashSet<>();
+        afta.add("skoda");
+        afta.add("vw");
+        afta.add("seat");
+        afta.add("skoda");
+        afta.add("seat");
+        afta.add("bmw");
+        afta.add("volvo");
 
-        hlavneMesta.put("Slovensko", "Bratislava");
-        hlavneMesta.put("Cesko", "Praha");
-        hlavneMesta.put("Polsko", "Varsava");
-        hlavneMesta.put("Madarsko", "Budapest");
+        System.out.println(afta);
+        System.out.println(afta.size());
 
-        System.out.println(hlavneMesta.size());
-        if(hlavneMesta.containsKey("Slovensko")){
-            System.out.println(hlavneMesta.get("Slovensko"));
-            hlavneMesta.remove("Slovensko");
+        if (afta.contains("skoda")) {
+            afta.remove("skoda");
         }
+        List<String> afta2 = new ArrayList<>(List.of("volvo","BMW"));
+        System.out.println(afta);
 
-        for(String kluc : hlavneMesta.keySet()) {
-            System.out.println(kluc);
-            System.out.println(hlavneMesta.get(kluc));
-        }
-        System.out.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-        for(String hodnota : hlavneMesta.values()) {
-            System.out.println(hodnota);
-        }
+        //vymaze tie prvky, ktore posielam ako pole
+        afta.removeAll(afta2);
+        System.out.println(afta);
 
-        System.out.println(hlavneMesta.get("Slovensko"));
+        afta.clear();
 
-        hlavneMesta.clear();
-        System.out.println(hlavneMesta);
+
+
+
     }
 
     private static void kontrola(Zviera zver) throws NotPesExeption, NotMackaExeption {
