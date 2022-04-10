@@ -6,4 +6,9 @@ public class Pes extends Zviera {
     public void akcia(){
         System.out.println(this.nazov + " robi haf haf");
     }
+
+    public String getNazov(){
+        return nazov;
+    }
 }
+

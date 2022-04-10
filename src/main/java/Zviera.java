@@ -5,5 +5,15 @@ public abstract class Zviera {
         this.nazov = nazov;
     }
 
+
     public void akcia(){}
+
+
+    public String toString() {
+        return this.nazov;
+    }
+
+    public String getNazov() {
+        return nazov;
+    }
 }

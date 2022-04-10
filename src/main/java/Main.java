@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 //        ArrayList<Zviera> zvery = new ArrayList<>();
 //
 //        zvery.add(new Pes("bruno"));
@@ -26,36 +26,19 @@ public class Main {
 //            System.out.println("po");
 //            System.out.println("===========");
 //        }
-        List<Zviera> zvery = new ArrayList<>(List.of(new Pes("bruno"), new Macka("pica")));
+        List<Zviera> zvery = new ArrayList<>(List.of(new Pes("bruno"), new Macka("pica"), new Pes("laky"),
+                new Macka("kokot")));
 
-        //prida do pola iba raz, ak uz prvok obsahuje ten co chceme pridat, tak ho uz neprida
-        Set<String> afta = new HashSet<>();
-        afta.add("skoda");
-        afta.add("vw");
-        afta.add("seat");
-        afta.add("skoda");
-        afta.add("seat");
-        afta.add("bmw");
-        afta.add("volvo");
+        System.out.println(zvery);
 
-        System.out.println(afta);
-        System.out.println(afta.size());
+        zvery.sort(new ZvieraComparator());
+        System.out.println(zvery);
 
-        if (afta.contains("skoda")) {
-            afta.remove("skoda");
-        }
-        List<String> afta2 = new ArrayList<>(List.of("volvo","BMW"));
-        System.out.println(afta);
+        zvery.sort((o1, o2) -> -o1.nazov.compareTo(o2.nazov));
+        System.out.println(zvery);
 
-        //vymaze tie prvky, ktore posielam ako pole
-        afta.removeAll(afta2);
-        System.out.println(afta);
-
-        afta.clear();
-
-
-
-
+        zvery.sort(Comparator.comparing(Zviera::getNazov));
+        System.out.println(zvery);
     }
 
     private static void kontrola(Zviera zver) throws NotPesExeption, NotMackaExeption {

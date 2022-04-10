@@ -6,4 +6,9 @@ public class Macka extends Zviera {
     public void akcia(){
         System.out.println(this.nazov + " robi mnau mnau");
     }
+
+
+    public String getNazov(){
+        return nazov;
+    }
 }
